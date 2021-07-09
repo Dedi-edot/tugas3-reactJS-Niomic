@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import MenuKontak from "./Page/MenuKontak";
+import MenuMakanan from "./Page/MenuMakanan";
+import MenuTentangKami from "./Page/MenuTentangKami";
+import MenuUtama from "./Page/MenuUtama";
+import Header from "./Page/Header";
+import Footer from "./Page/Footer";
+import "bootstrap/dist/css/bootstrap.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <MenuUtama />
+        <MenuMakanan />
+        <MenuKontak />
+        <MenuTentangKami />
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;
