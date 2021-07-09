@@ -1,73 +1,86 @@
 import React from "react";
-import ListMakanan from "../ListData/ListMakanan";
+import FormMakanan from "../Form/FormMakanan";
+import DaftarMakanan from "../Lib/DaftarMakanan";
+
+const listmakanan = [
+  {
+    namaMakanan: "Nasi Padang",
+    harga: 20000,
+  },
+  {
+    namaMakanan: "Sate",
+    harga: 20000,
+  },
+  {
+    namaMakanan: "Soto",
+    harga: 10000,
+  },
+  {
+    namaMakanan: "Nasi Uduk",
+    harga: 15000,
+  },
+  {
+    namaMakanan: "Nasi Kuning",
+    harga: 10000,
+  },
+  {
+    namaMakanan: "Ayam Geprek",
+    harga: 15000,
+  },
+  {
+    namaMakanan: "Pecel Lele",
+    harga: 20000,
+  },
+  {
+    namaMakanan: "Pecel Ayam",
+    harga: 25000,
+  },
+  {
+    namaMakanan: "Mie Ayam",
+    harga: 10000,
+  },
+];
 
 class MenuMakanan extends React.Component {
-  state = {
-    pesanan: "",
-    jmlPesan: 0,
-    tampil: false,
-  };
-
-  handleAddKetik = (event) => {
-    this.setState({ pesanan: event.target.value, tampil: true });
-  };
-
-  handleJmlPesan = (event) => {
-    this.setState({ jmlPesan: event.target.value });
-  };
-
-  handleAdd = (value) => {
-    this.setState({ pesanan: value, tampil: true });
-  };
-  handleBatal = () => {
-    this.setState({ tampil: !this.state.tampil });
-  };
-
   render() {
     return (
       <div>
-        <h3 className="text-center">Daftar makanan yang kami sediakan</h3>
+        <h3 className="text-center">Daftar makanan favorit</h3>
         <center>
-          <td>
-            <ListMakanan menu="https://s3-ap-southeast-1.amazonaws.com/niomic/img/sample/nasipadang.jpg" />
-            <button onClick={() => this.handleAdd("Nasi Padang")}>Pesan</button>
-          </td>
-          <td>
-            <ListMakanan menu="https://s3-ap-southeast-1.amazonaws.com/niomic/img/sample/sate.png" />
-            <button onClick={() => this.handleAdd("Sate")}>Pesan</button>
-          </td>
-          <td>
-            <ListMakanan menu="https://s3-ap-southeast-1.amazonaws.com/niomic/img/sample/sotolamongan.png" />
-            <button onClick={() => this.handleAdd("Soto")}>Pesan</button>
-          </td>
-          <td>
-            <ListMakanan menu="https://www.dbs.com/iwov-resources/images/newsroom/indonesia/Blog/masakan%20nusantara/nasi%20kentut.png" />
-            <button onClick={() => this.handleAdd("Nasi Uduk")}>Pesan</button>
-          </td>
-          <td>
-            <ListMakanan menu="https://www.resepistimewa.com/wp-content/uploads/nasi-kuning.jpg" />
-            <button onClick={() => this.handleAdd("Nasi Kuning")}>Pesan</button>
-          </td>
+          <table>
+            <tbody>
+              <tr>
+                {DaftarMakanan.map((val, index) => {
+                  return (
+                    <td key={index}>
+                      <img
+                        src={val.img}
+                        alt="Product Makanan"
+                        width="150"
+                        height="100"
+                      />
+                      <center>
+                        <p>{val.namaMakanan}</p>
+                        <p>Harga: Rp. {val.harga}</p>
+                      </center>
+                    </td>
+                  );
+                })}
+              </tr>
+            </tbody>
+          </table>
+          <h4>List Makanan</h4>
+          {listmakanan.map((makanan, index) => {
+            return (
+              <div key={index}>
+                <p>
+                  {index + 1}. {makanan.namaMakanan} | Harga: {makanan.harga}
+                </p>
+              </div>
+            );
+          })}
           <br />
-          <input
-            type="text"
-            placeholder="Makanan yang dipesan"
-            onChange={this.handleAddKetik}
-          />
-          <input
-            type="text"
-            placeholder="Masukkan Jumlah Pesanan"
-            onChange={this.handleJmlPesan}
-          />
-          <button onClick={this.handleBatal}>Batalkan Pesanan</button>
-          <br />
-          {this.state.tampil ? (
-            <div>
-              <strong>Pesanan Anda : {this.state.pesanan}</strong>
-              <br />
-              <strong>Jumlah Pesanan : {this.state.jmlPesan}</strong>
-            </div>
-          ) : null}
+          <FormMakanan />
         </center>
       </div>
     );
