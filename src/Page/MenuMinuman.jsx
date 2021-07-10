@@ -1,28 +1,28 @@
 import React from "react";
 import Header from "./Header";
-import DaftarMakanan from "../Lib/DaftarMakanan";
+import DaftarMinuman from "../Lib/DaftarMinuman";
 
-class MenuMakanan extends React.Component {
+class MenuMinuman extends React.Component {
   render() {
     return (
       <div>
         <Header />
-        <h3 style={{ textAlign: "center" }}>Daftar Makanan Favorit</h3>
+        <h3>Daftar Minuman Favorit</h3>
         <table style={{ width: "100%" }}>
           <tbody>
             <tr>
-              {DaftarMakanan.map((makanan) => {
+              {DaftarMinuman.map((minuman) => {
                 return (
                   <td>
                     <center>
                       <img
-                        src={makanan.img}
-                        alt="Product Makanan"
+                        src={minuman.img}
+                        alt="Product Minuman"
                         width="150"
                         height="100"
                       />
-                      <p>{makanan.namaMakanan}</p>
-                      <p>Harga: Rp. {makanan.harga}</p>
+                      <p>{minuman.namaMinuman}</p>
+                      <p>Harga: Rp. {minuman.harga}</p>
                     </center>
                   </td>
                 );
@@ -35,4 +35,4 @@ class MenuMakanan extends React.Component {
   }
 }
 
-export default MenuMakanan;
+export default MenuMinuman;

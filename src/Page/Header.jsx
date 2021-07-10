@@ -1,68 +1,54 @@
 import React from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Link } from "react-router-dom";
+import "../Style/Header.css";
 
-const Header = () => {
-  return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand>Tugas Niomic</NavbarBrand>
-        <NavbarToggler />
-        <Collapse navbar >
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="#">Home</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Product</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Kontak</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#">Tentang Kami</NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
-  );
-};
-
-// class Header extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Navbar color="light" light expand="md">
-//           <NavbarBrand>Tugas Niomic</NavbarBrand>
-//           <NavbarToggler />
-//           <Collapse navbar>
-//             <Nav className="mr-auto" navbar>
-//               <NavItem>
-//                 <NavLink href="#">Home</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="#">Product</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="#">Kontak</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="#">Tentang Kami</NavLink>
-//               </NavItem>
-//             </Nav>
-//           </Collapse>
-//         </Navbar>
-//       </div>
-//     );
-//   }
-// }
+class Header extends React.Component {
+  render() {
+    return (
+      <div id="head">
+        <table style={{ width: "100%" }}>
+          <tbody>
+            <tr>
+              <center>
+                <td>
+                  <h2>
+                    <Link to="/" className="link">
+                      Home
+                    </Link>
+                    |
+                  </h2>
+                </td>
+                <td>
+                  <h2>
+                    <Link to="/menu-makanan" className="link">
+                      Makanan
+                    </Link>
+                    |
+                  </h2>
+                </td>
+                <td>
+                  <h2>
+                    <Link to="/menu-minuman" className="link">
+                      Minuman
+                    </Link>
+                    |
+                  </h2>
+                </td>
+                <td>
+                  <h2>
+                    <Link to="/kontak" className="link">
+                      Kontak
+                    </Link>
+                    |
+                  </h2>
+                </td>
+              </center>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
 
 export default Header;
